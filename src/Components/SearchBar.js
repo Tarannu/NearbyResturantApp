@@ -17,7 +17,7 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
             <FiSearch
               name="search"
               style={{ fontSize: 20, alignItems: "center" }}
-              onclick={console.log({term})}
+              onClick={console.log(term)}
 
             />{" "}
             Search{" "}
