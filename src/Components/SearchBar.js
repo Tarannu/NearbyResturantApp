@@ -4,9 +4,12 @@ import { FiSearch } from "react-icons/fi";
 //{"    "}
 
 const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+  }
   return (
     <div>
-      <form onSubmit={onTermSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="input-box">
           <input onChange={onTermChange} value={term} placeholder="Enter Location ... " />
           {"    "}
@@ -17,7 +20,7 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
             <FiSearch
               name="search"
               style={{ fontSize: 20, alignItems: "center" }}
-              onClick={console.log(term)}
+              onClick={onTermSubmit}
 
             />{" "}
             Search{" "}

@@ -1,72 +1,65 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
-import MiddleSection from "./MiddleSection";
-import axios from "axios";
-import yelp from "../api/yelp";
+import ResultSection from "./ResultSection";
+import zomato from "../api/zomato";
 
 const Home = () => {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
 
-  // const searchApi=async()=>{
-  //   try{
-  //   const response=await yelp.get('/search',{
-  //     params:{
-  //       limit:50,
-  //       term,
-  //       location:'san jose'
-  //     }
-  //   });
-  //   setResults(response.data.businesses);
-
-  // } catch(err){
-  //   console.log(err)
-  // }
-
-  // }
-  
-  const options = {
-    method: 'GET',
-    url: 'https://developers.zomato.com/api/v2.1/locations?query=Miami',
-    headers: {
-      'user-key':'70603f3ae4dd3141c5a0afb0dd61ad32',
-
-    }
-  };
-  
-  // axios.request(options).then(function (response) {
-  //   console.log(response.data);
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
-  
-  const searchApi = async () => {
-    const response = await axios.request(options);
-    console.log("web response "+JSON.stringify(response.data.location_suggestions[0].title));
-    setResults(response.data.location_suggestions);
-  };
-  useEffect(() => {
-    searchApi();
-  }, []);
   const handleChange = (e) => {
     setTerm(e.target.value);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    searchApi();
-    console.log("Entered the handlesubmit function with input ");
+
+  const searchFunc = async (searchTerm) => {
+    try {
+      const city_response = await zomato.get(`/locations?query=${searchTerm}`);
+      const city_id = JSON.stringify(
+        city_response.data.location_suggestions[0].entity_id
+      );
+      // console.log(
+      //   "web response " +
+      //     JSON.stringify(city_response.data.location_suggestions[0])
+      // );
+      const food_response = await zomato.get(
+        `/search?entity_id=${city_id}&entity_type=city&q=burger&sort=rating&order=asc`
+      );
+      //console.log("food response" + JSON.stringify(food_response.data.restaurants));
+      // const items=food_response.data.restaurants.map(r=>{
+      //   return {
+      //     name:r.name,
+      //     location:r.location
+      //   }
+      // })
+      setResults(food_response.data.restaurants[0].restaurant.name);
+      //console.log("result item is" +JSON.stringify(results));
+      console.log(results);
+    } catch (err) {
+      console.log(err);
+    }
+    // 
   };
+
+  useEffect(()=>{
+    searchFunc('miami');
+  },[]);
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    searchFunc();
+
+  }
+  
 
   return (
     <div style={{ padding: 50 }}>
       <SearchBar
         term={term}
         onTermChange={handleChange}
-        onTermSubmit={handleSubmit}
+        onTermSubmit={searchFunc(term)}
       />
-      <p>We have found {results.length} results</p>
+      <p>We have found has {results} results</p>
 
-      <MiddleSection />
+      <ResultSection />
     </div>
   );
 };
