@@ -11,9 +11,9 @@ const Home = () => {
     setTerm(e.target.value);
   };
 
-  const searchFunc = async (searchTerm) => {
+  const searchFunc = async (term) => {
     try {
-      const city_response = await zomato.get(`/locations?query=${searchTerm}`);
+      const city_response = await zomato.get(`/locations?query=${term}`);
       const city_id = JSON.stringify(
         city_response.data.location_suggestions[0].entity_id
       );
@@ -24,14 +24,14 @@ const Home = () => {
       const food_response = await zomato.get(
         `/search?entity_id=${city_id}&entity_type=city&q=burger&sort=rating&order=asc`
       );
-      //console.log("food response" + JSON.stringify(food_response.data.restaurants));
-      // const items=food_response.data.restaurants.map(r=>{
-      //   return {
-      //     name:r.name,
-      //     location:r.location
-      //   }
-      // })
-      setResults(food_response.data.restaurants[0].restaurant.name);
+      console.log("food response" + JSON.stringify(food_response.data.restaurants));
+      const items=food_response.data.restaurants.map(r=> {
+        return([r.restaurant.name, r.restaurant.id])
+        });
+      if(items){
+      setResults(items);
+      console.log(results);
+      }
       //console.log("result item is" +JSON.stringify(results));
       console.log(results);
     } catch (err) {
@@ -41,12 +41,10 @@ const Home = () => {
   };
 
   useEffect(()=>{
-    searchFunc('miami');
-  },[]);
+    searchFunc(term);
+  },[term]);
   const handleSubmit=(e)=>{
     e.preventDefault();
-    searchFunc();
-
   }
   
 
@@ -55,9 +53,9 @@ const Home = () => {
       <SearchBar
         term={term}
         onTermChange={handleChange}
-        onTermSubmit={searchFunc(term)}
+        onTermSubmit={handleSubmit}
       />
-      <p>We have found has {results} results</p>
+      <p>The resturant name is {results} at {term}</p>
 
       <ResultSection />
     </div>

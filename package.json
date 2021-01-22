@@ -2,7 +2,6 @@
   "name": "food",
   "version": "0.1.0",
   "private": true,
-  
   "dependencies": {
     "@expo/vector-icons": "^12.0.2",
     "@react-icons/all-files": "^4.1.0",
@@ -10,6 +9,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "create": "0.0.2",
     "documenu": "^1.1.0",

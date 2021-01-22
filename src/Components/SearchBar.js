@@ -3,7 +3,7 @@ import { FiSearch } from "react-icons/fi";
 //<input type="text" placeholder="Enter Sushie type ..." />
 //{"    "}
 
-const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+const SearchBar = ({ term, onTermChange,onTermSubmit}) => {
   const handleSubmit=(e)=>{
     e.preventDefault();
   }
