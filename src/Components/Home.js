@@ -5,10 +5,12 @@ import zomato from "../api/zomato";
 
 const Home = () => {
   const [term, setTerm] = useState("");
-  const [results, setResults] = useState({
-    id: [],
-    name: [],
-  });
+  const [results, setResults] = useState([
+    {
+      id: [],
+      name: [],
+    },
+  ]);
 
   const handleChange = (e) => {
     setTerm(e.target.value);
@@ -32,12 +34,12 @@ const Home = () => {
       const iD = items.map((r) => r.restaurant.id);
       console.log(iD);
       if (items) {
-        setResults({
+        setResults([{
           id: items.map((r) => r.restaurant.id),
           name: items.map((r) => r.restaurant.name),
-        });
+        }]);
       }
-      console.log("ser result is "+results);
+      console.log("ser result is " + results);
       console.log("set result names are " + results.name);
     } catch (err) {
       console.log(err);
@@ -60,8 +62,15 @@ const Home = () => {
         onTermChange={handleChange}
         onTermSubmit={handleSubmit}
       />
-      {results.name}
-
+      <div>
+        {results.map((result)=>
+          <ul>
+            {result.name.map((n) => (
+              <li >{n}</li>
+            ))}
+          </ul>
+        )}
+      </div>
       <ResultSection />
     </div>
   );
