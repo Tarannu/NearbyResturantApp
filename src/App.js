@@ -1,33 +1,24 @@
-import React from 'react';
+import React from 'react'; 
+import { Route, Switch } from 'react-router-dom';
+import Home from '../src/containers/Home/Home';
+import About from './components/About/About';
+import Register from './components/Register/Register';
+import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 import './App.css';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
-import ComponentHome from './Components/Home';
-import Nav from './Route/Navbar';
-import About from './Route/About';
-import SignIn from './Route/SignUp';
-import Footer from './Route/footer';
 
-
-
-function App() {
+const App = (props) => {
   return (
-    <Router>
-    <div className="App">
-      <Nav/>
-      <Route path="/" exact component={Home}/>
-      <Route path="/About" component={About}/>
-      <Route path="/SignIn" component={SignIn}/>
-      <Footer/>
-      
-    </div>
-    </Router>
+      <div className="App">
+          <Nav/>
+          <Switch>
+              <Route path="/" exact component={Home}/>
+              <Route path="/about" exact component={About}/>
+              <Route path="/register" exact component={Register}/>
+          </Switch>
+          <Footer/>
+      </div>
   );
 }
-const Home=()=>{
-  return(
-    <div>
-    <ComponentHome/>
-    </div>
-  )
-}
+
 export default App;

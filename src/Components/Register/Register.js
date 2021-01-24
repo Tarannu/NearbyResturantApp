@@ -5,7 +5,7 @@ import axios from '../../axios';
 import './Register.css';
 
 const Register = (props) => {
-    const [users, setUsers] = useState([]);
+    const[validationError, setValidationError] = useState(''); 
     const [formData, setFormData] = useState({
         dataFields: {
             firstName: {
@@ -117,7 +117,8 @@ const Register = (props) => {
     }
 
     // handle signUp button
-    const signUpButtonHandler = (event) => {
+    const signUpButtonHandler = async (event) => {
+        setValidationError('');
         const user = {
             username: formData.dataFields.email.value,
             passoword: formData.dataFields.password.value,
@@ -125,20 +126,26 @@ const Register = (props) => {
             lastName: formData.dataFields.lastName.value,
             email: formData.dataFields.email.value,
         }
+
+        // either sign user up or generate error message
         if(formData.isFormValid){
-            axios.get('/users.json')
+            axios.get(`/users.json`)
                 .then(response => {
-                    const userArray = [];
+                    let alreadySignedUp = false;
                     for(let key in response.data){
-                        userArray.push('' + response.data[key].username);
+                        if(response.data[key].username === user.username){
+                            alreadySignedUp = true;
+                        }
                     }
-                    setUsers(userArray);
+                    if(alreadySignedUp === false){
+                        axios.post('/users.json', user)
+                        .then(response => {
+                            console.log(response);
+                        });
+                    } else{
+                        setValidationError('User already exists. Cannot register.');
+                    }
                 })
-            // axios.post('/users.json', user)
-            //     .then(response => {
-            //         console.log(response);
-            //     })
-        console.log(users);
         }
         event.preventDefault();
     }
@@ -190,9 +197,10 @@ const Register = (props) => {
         </form>
     return (
         <>
-            <p className="RegisterTitle">Register for the app</p>
+            <p className="RegisterTitle">Register for more actions and easy checkouts</p>
             <div className="RegisterPage">
                 {form}
+                <p className="ValidationError">{validationError}</p>
              </div>
         </>
         

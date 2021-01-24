@@ -8,8 +8,8 @@
 }
 
 .FoodImage{
-    box-sizing: border-box;
-    height: 100%;
+    box-sizing: content-box;
     width: 100%;
+    object-fit: contain;
 
 }
