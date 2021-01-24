@@ -25,13 +25,18 @@ input{
   padding: 20px;
   margin: 20px 0;
   box-sizing: border-box;
-  background-color: rgb(240, 240, 240);
+  border: none;
+  background-color: rgba(240, 240, 240);
 }
 /* Home page style*/
 .searchButton{
+  display: inline-block;
   background: rgb(233, 183, 190);
-  box-shadow: 10;
   color:white;
+  padding:10px 30px;
+  cursor: pointer;
+  border: none;
+  border-radius:5px;
   
 }
 
@@ -39,6 +44,38 @@ input{
   font-size: 30;
   align-self: center;
 }
+/* List styling */
+.resturaunt-list-parent{
+  position:relative;
+  margin:100px auto 0;
+  width: 450px;
+  background-color:rgb(233, 183, 190);
+  box-sizing: border-box;
+  padding: 10px;
+  font-family: sans-serif;
+  list-style: none;
+  
+}
+ol li{
+  display: flex;
+  text-align: justify;
+  background:rgba(197, 154, 158, 0.4);
+  color: #fff;
+  padding:10px 20px;
+  margin:5px 0;
+  transition: 0.5s;
+}
+ol li:nth-child()
+{
+  background: rgba(197, 154, 158, 0.1)
+  
+}
+ol li:hover{
+  transform: scale(1.06);
+  background: rgb(233, 183, 190);
+}
+
+
 
 /* Sign up form */
 .signup-form{
