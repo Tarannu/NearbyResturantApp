@@ -44,12 +44,12 @@ input{
   font-size: 30;
   align-self: center;
 }
-/* List styling */
+/*  Result List styling */
 .resturaunt-list-parent{
   position:relative;
-  margin:100px auto 0;
+  margin:40px auto 0;
   width: 450px;
-  background-color:rgb(233, 183, 190);
+  background-color:rgba(194, 90, 104, 0.918);
   box-sizing: border-box;
   padding: 10px;
   font-family: sans-serif;
@@ -100,4 +100,23 @@ ol li:hover{
 }
 .error-message{
   color: red;
+}
+/* footer styling */
+.footer{
+  min-height: 10vh;
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  background:  rgb(233, 183, 190);
+  justify-content: space-around;
+}
+.social{
+  width:40%;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
 }

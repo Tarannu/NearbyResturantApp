@@ -7,6 +7,7 @@ const Home = () => {
   const [food,setFood]=useState("");
   const [location, setLocation] = useState("");
   const [results, setResults] = useState([]);
+  const [sort,setSort]=useState('');
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -15,35 +16,46 @@ const Home = () => {
   const handleFoodChange=(e)=>{
     setFood(e.target.value);
   }
+  const handleSortChange=(e)=>{
+    setSort(e.target.value);
+  }
 
-  const searchFunc = async (loc,fd) => {
-    console.log("inside search func")
+  const searchFunc = async (loc,fd,sort) => {
+    console.log("inside search")
     try {
       const city_response = await zomato.get(`/locations?query=${loc}`);
       const city_id = JSON.stringify(
         city_response.data.location_suggestions[0].entity_id
       );
+
+      //sort logic will be here
+      
       const food_response = await zomato.get(
-        `/search?entity_id=${city_id}&entity_type=city&q=${fd}&sort=rating&order=asc`
-      );
-      console.log(
-        "food response" + JSON.stringify(food_response.data.restaurants)
-      );
+        `/search?entity_id=${city_id}&entity_type=city&q=${fd}`);
+      
       const items = food_response.data.restaurants; 
       console.log("ITEM IS :  ",items);
       if (items.length) {
         setResults(items);
+
       }
-      console.log("ser result is " + results);
-      console.log("set result names are " + results.name);
+      
     } catch (err) {
       console.log(err);
     }
-  
+    //
   };
+
+  // useEffect(() => {
+  //   searchFunc(location,food);
+    
+  // }, [location,food]);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     searchFunc(location,food);
+    
   };
   
   return (
@@ -54,7 +66,12 @@ const Home = () => {
         onFoodChange={handleFoodChange}
         onTermSubmit={handleSubmit}
       />
-      
+      <div>
+      <select  className="selection-button" name='sort' >
+      <option value="" disabled selected>Sort by</option>
+      <option value="by review">Sort by Review</option>
+      </select>
+      </div>      
       <ResultSection results={results} />
     </div>
   );
