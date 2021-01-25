@@ -7,9 +7,9 @@ import {
 
 const footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div>
-        <h1 style={{textAlign:'justify',textDecoration: 'underline'}}>About us</h1>
+        <h2 style={{textAlign:'justify',textDecoration: 'underline'}}>About us</h2>
         <p style={{textAllign:'justify'}}>
           {" "}
           We are trying to provide food search at your fingertips with much more
@@ -17,7 +17,7 @@ const footer = () => {
         </p>
       </div>
       <div style={{textAlign:"justify"}}>
-        <h1 style={{textDecoration: 'underline'}}>Contact us</h1>
+        <h2 style={{textDecoration: 'underline'}}>Contact us</h2>
         <p> Phone : 325 666 6666</p>
         <p>Email: algo-prakash-taran@food-app.com</p>
       
@@ -27,7 +27,7 @@ const footer = () => {
       <li><AiOutlineTwitter style={{ fontSize: 20, alignItems: "center" }}/></li>
       </fl>
       </div>
-    </div>
+    </footer>
   );
 };
 

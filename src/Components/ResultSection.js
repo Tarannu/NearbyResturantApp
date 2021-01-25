@@ -1,16 +1,19 @@
 import React from "react";
+import {AiFillStar} from 'react-icons/ai';
+import {Link} from 'react-router-dom';
 
 const ResultSection = ({ results }) => {
   return results ? (
     <div>
-      
       <div>
       {results.map(item=>(
-          <ol className="resturaunt-list-parent">
-          <li className="resturaunt-name-list" key={item.restaurant.id}>Restaurant Name is {item.restaurant.name}</li>
-          <li className="resturaunt-name-list" key={item.restaurant.locality_verbose}>Location is : {item.restaurant.location.locality_verbose}</li>
+          <ol className="resturaunt-list-parent" >
+          <Link to={`/${item.restaurant.id}`} style={{textDecoration:'none'}}><li key={item.restaurant.id}>Restaurant Name is {item.restaurant.name}</li></Link>
+          <li key={item.restaurant.locality_verbose}>Location is : {item.restaurant.location.locality_verbose}</li>
+          <li> It has {item.restaurant.user_rating.aggregate_rating}{" "}<AiFillStar/> reviews </li>
           </ol>
-      ))} 
+      ))}
+      <button className="load-more">Load More</button> 
       </div> 
       
     </div>

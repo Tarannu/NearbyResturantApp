@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+body{
+  min-height: 100vh;
+}
 .nav{
   display:flex;
   justify-content: space-around;
@@ -70,7 +72,7 @@ ol li:nth-child()
   background: rgba(197, 154, 158, 0.1)
   
 }
-ol li:hover{
+ol li:nth-child(1):hover{
   transform: scale(1.06);
   background: rgb(233, 183, 190);
 }
@@ -102,10 +104,10 @@ ol li:hover{
   color: red;
 }
 /* footer styling */
-.footer{
-  min-height: 10vh;
+footer{
   display: flex;
-  position: fixed;
+  position: relative;
+  bottom: 0;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -113,6 +115,7 @@ ol li:hover{
   background:  rgb(233, 183, 190);
   justify-content: space-around;
 }
+
 .social{
   width:40%;
   display:flex;
