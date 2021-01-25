@@ -2,10 +2,10 @@ import React from "react";
 import {AiFillStar} from 'react-icons/ai';
 import {Link} from 'react-router-dom';
 
-const ResultSection = ({ results }) => {
+const ResultSection = ({ results,onSortChanged }) => {
   return results ? (
     <div>
-      <div>
+      <div onChange={onSortChanged}>
       {results.map(item=>(
           <ol className="resturaunt-list-parent" >
           <Link to={`/${item.restaurant.id}`} style={{textDecoration:'none'}}><li key={item.restaurant.id}>Restaurant Name is {item.restaurant.name}</li></Link>

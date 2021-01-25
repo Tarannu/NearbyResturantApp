@@ -1,0 +1,114 @@
+{
+    "R": {
+      "res_id": 16933935,
+      "is_grocery_store": false,
+      "has_menu_status": {
+        "delivery": -1,
+        "takeaway": -1
+      }
+    },
+    "apikey": "bbdeea07c3e0b3a970c8423db947bfee",
+    "id": "16933935",
+    "name": "Blue Collar Restaurant",
+    "url": "https://www.zomato.com/miami/blue-collar-restaurant-upper-east-side?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+    "location": {
+      "address": "6730 Biscayne Boulevard, Miami 33138",
+      "locality": "Upper East Side",
+      "city": "Miami",
+      "city_id": 291,
+      "latitude": "25.8379208000",
+      "longitude": "-80.1843928000",
+      "zipcode": "33138",
+      "country_id": 216,
+      "locality_verbose": "Upper East Side, Miami"
+    },
+    "switch_to_order_menu": 0,
+    "cuisines": "American, Seafood, Southern",
+    "timings": "11:30 AM to 3:30 PM, 6 PM to 10 PM (Mon-Thu),11:30 AM to 3:30 PM, 6 PM to 11 PM (Fri),11 AM to 3:30 PM, 6 PM to 11 PM (Sat),11 AM to 3:30 PM, 6 PM to 10 PM (Sun)",
+    "average_cost_for_two": 150,
+    "price_range": 4,
+    "currency": "$",
+    "highlights": [
+      "Dinner",
+      "Cash",
+      "Debit Card",
+      "Takeaway Available",
+      "Lunch",
+      "Serves Alcohol",
+      "Credit Card",
+      "Delivery",
+      "Beer",
+      "MasterCard for Debit Card",
+      "Visa for Debit Card",
+      "AMEX for Debit Card",
+      "Discover for Debit Card",
+      "Street Parking",
+      "MasterCard for Credit Card",
+      "Visa for Credit Card",
+      "AMEX for Credit Card",
+      "Discover for Credit Card",
+      "Outdoor Seating",
+      "Brunch",
+      "Wine"
+    ],
+    "offers": [],
+    "opentable_support": 0,
+    "is_zomato_book_res": 0,
+    "mezzo_provider": "OTHER",
+    "is_book_form_web_view": 0,
+    "book_form_web_view_url": "",
+    "book_again_url": "",
+    "thumb": "https://b.zmtcdn.com/data/res_imagery/16933935_RESTAURANT_a5b480d49ecfa73ec7efb8dca9ca70e8.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+    "user_rating": {
+      "aggregate_rating": "4.9",
+      "rating_text": "Excellent",
+      "rating_color": "3F7E00",
+      "rating_obj": {
+        "title": {
+          "text": "4.9"
+        },
+        "bg_color": {
+          "type": "lime",
+          "tint": "800"
+        }
+      },
+      "votes": 146
+    },
+    "all_reviews_count": 49,
+    "photos_url": "https://www.zomato.com/miami/blue-collar-restaurant-upper-east-side/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+    "photo_count": 53,
+    "menu_url": "https://www.zomato.com/miami/blue-collar-restaurant-upper-east-side/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+    "featured_image": "https://b.zmtcdn.com/data/res_imagery/16933935_RESTAURANT_a5b480d49ecfa73ec7efb8dca9ca70e8.jpg",
+    "medio_provider": false,
+    "has_online_delivery": 0,
+    "is_delivering_now": 0,
+    "store_type": "",
+    "include_bogo_offers": true,
+    "deeplink": "zomato://restaurant/16933935",
+    "is_table_reservation_supported": 0,
+    "has_table_booking": 0,
+    "events_url": "https://www.zomato.com/miami/blue-collar-restaurant-upper-east-side/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+    "phone_numbers": "(305) 756-0366",
+    "all_reviews": {
+      "reviews": [
+        {
+          "review": []
+        },
+        {
+          "review": []
+        },
+        {
+          "review": []
+        },
+        {
+          "review": []
+        },
+        {
+          "review": []
+        }
+      ]
+    },
+    "establishment": [
+      "Casual Dining"
+    ]
+  }

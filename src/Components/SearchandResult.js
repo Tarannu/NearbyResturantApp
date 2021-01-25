@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import ResultSection from "./ResultSection";
-import ResSelect from "../Route/ResSelectPopOut";
 import zomato from "../api/zomato";
-import {BrowserRouter as Router,Route} from 'react-router-dom';
+import Select from "react-select";
 
 const Home = () => {
   const [food, setFood] = useState("");
   const [location, setLocation] = useState("");
   const [results, setResults] = useState([]);
+  const options = [{ label: "sort by review", value: "by review" }];
   const [sort, setSort] = useState("");
-  
+
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
   };
@@ -31,11 +31,12 @@ const Home = () => {
       );
 
       //sort logic will be here
-      
+      var getURL = "";
+      if (sort == "by review") {
+        getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}&sort=rating&order=desc`;
+      } else getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}`;
       //this api get the food type
-      const food_response = await zomato.get(
-        `/search?entity_id=${city_id}&entity_type=city&q=${fd}&sort=rating&order=desc`
-      );
+      const food_response = await zomato.get(getURL);
 
       const items = food_response.data.restaurants;
       console.log("ITEM IS :  ", items);
@@ -45,22 +46,23 @@ const Home = () => {
     } catch (err) {
       console.log(err);
     }
-    //
   };
-
+  
   useEffect(() => {
-    searchFunc(location,food);
-    
-  }, [location,food]);
-
+    searchFunc(location, food, sort);
+  }, [location, food,sort]);
+  
   const handleSubmit = (e) => {
-    console.log("It will take max 15 minutes to load otherwise please refresh")
+    console.log("It will take max 15 minutes to load otherwise please refresh");
     e.preventDefault();
-    searchFunc(location, food);
+    searchFunc(location, food,sort);
   };
-  const handleClick=(e)=>{
-
-  }
+  const handleClick = (e) => {};
+  const handleSelect = (value) => {
+    setSort(value);
+    console.log(sort);
+    searchFunc(food,location,sort);
+  };
 
   return (
     <div style={{ padding: 50 }}>
@@ -70,17 +72,11 @@ const Home = () => {
         onFoodChange={handleFoodChange}
         onTermSubmit={handleSubmit}
       />
-      <div>
-        <select className="selection-button" name="sort">
-          <option value="" disabled selected>
-            Sort by
-          </option>
-          <option value="by review">Sort by Review</option>
-        </select>
+      <div style={{ fontSize: 14 }}>
+        <Select options={options} onChange={handleSelect} />
       </div>
-      
-      <ResultSection results={results} />
-      
+
+      <ResultSection results={results} onSortChanged={handleSelect} />
     </div>
   );
 };

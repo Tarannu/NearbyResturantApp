@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import zomato from "../api/zomato";
 
+
 const ResSelectPopOut = ({ match }) => {
   const [results, setResults] = useState([]);
-  const [menu, setMenu] = useState([]);
+  
   const detailsFunc = async () => {
     try {
       //location key is extracted from this api
