@@ -1,15 +1,19 @@
 .About{
-    height: 70vh;
+    height: 90vh;
+    box-sizing:inherit;
+    margin: auto;
 }
 
 .AboutPara{
     font-family: fantasy;
     font-size: large;
+    padding-top: 340px;
+    padding-bottom: 340px;
+
 }
 
-.FoodImage{
+/* .FoodImage{
     box-sizing: content-box;
     width: 100%;
     object-fit: contain;
-
-}
+} */

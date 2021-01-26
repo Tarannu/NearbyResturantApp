@@ -146,6 +146,8 @@ const Register = (props) => {
                         setValidationError('User already exists. Cannot register.');
                     }
                 })
+        } else{
+            setValidationError('Please, complete the form to sign up.');
         }
         event.preventDefault();
     }
@@ -196,13 +198,13 @@ const Register = (props) => {
             <Button>Sign Up</Button>
         </form>
     return (
-        <>
+        <div className="Register">
             <p className="RegisterTitle">Register for more actions and easy checkouts</p>
             <div className="RegisterPage">
                 {form}
                 <p className="ValidationError">{validationError}</p>
              </div>
-        </>
+        </div>
         
     )
 }

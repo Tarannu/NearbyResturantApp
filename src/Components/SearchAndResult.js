@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import ResultSection from "./ResultSection";
 import zomato from "../api/zomato";
 
-const Home = () => {
+const SearchAndResult = () => {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([
     {
@@ -82,4 +82,4 @@ const Home = () => {
 // }
 // </ul>
 
-export default Home;
+export default SearchAndResult;

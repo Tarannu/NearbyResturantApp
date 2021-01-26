@@ -1,4 +1,9 @@
-
+.Register{
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    height: 110vh;
+    overflow: scroll;
+}
 .RegisterPage{
     box-sizing: border-box;
     border: 1px solid lightgrey;

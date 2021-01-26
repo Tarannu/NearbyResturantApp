@@ -46,6 +46,39 @@ const Login = (props) => {
 
     const [authenticated, setAuthenticated] = useState(false);
 
+    const getTotalGoals = async (year, team) => {
+        const BaseURL = 'https://jsonmock.hackerrank.com/api/football_matches';
+        const resJson = await fetch(`${BaseURL}?year=${year}&team1=${team}`);
+        const res = await resJson.json();
+        // console.log(res.total_pages);
+        let totalGoals = 0;
+        for(let i=1;i<=res.total_pages;i++){
+            const responseJson = await fetch(`${BaseURL}?year=${year}&team1=${team}&page=${i}`);
+            const response = await responseJson.json();
+            for(let j=0;j<response.data.length;j++){
+                // console.log(parseInt(response.data[j]['team1goals']));
+                totalGoals += parseInt(response.data[j]['team1goals']);
+            }
+        }
+        
+        for(let i=1;i<=res.total_pages;i++){
+            const responseJson = await fetch(`${BaseURL}?year=${year}&team2=${team}&page=${i}`);
+            const response = await responseJson.json();
+            for(let j=0;j<response.data.length;j++){
+                // console.log(parseInt(response.data[j]['team1goals']));
+                totalGoals += parseInt(response.data[j]['team2goals']);
+            }
+        }
+
+        // const Http = new XMLHttpRequest();
+        // const url = `${BaseURL}?year=${year}&team1=${team}&page=1`;
+        // Http.open("GET", url);
+        // Http.send();
+        // Http.onreadystatechange = (e) => {
+        //     console.log(Http.response);
+        // }
+    }
+
     // validate the input
     const validated = ( value, rules ) => {
         let isValid = true;
@@ -58,6 +91,10 @@ const Login = (props) => {
             isValid = re.test(String(value).toLowerCase());
         }
         return isValid;
+    }
+
+    const continueAsGuest = () => {
+        props.history.push('/search-and-result')
     }
 
     const loginHandler = (event) => {
@@ -93,9 +130,11 @@ const Login = (props) => {
     // handle Login button click
     const loginButtonHandler = (event) => {
         event.preventDefault();
-        if(formData.validDataEntered){
-            console.log('Valid data enetered. Authenticating user...')
-        }
+        // if(formData.validDataEntered){
+        //     console.log('Valid data enetered. Authenticating user...')
+        // }
+        getTotalGoals(2011, 'Ac Milan');
+
     }
 
     // handler Register button click
@@ -146,7 +185,9 @@ const Login = (props) => {
                         onClick={registerClickHandler}>Register</p>
                 </div>
             </div>
-            <p className="Guest" >Continue as guest</p>
+            <p 
+                className="Guest" 
+                onClick={continueAsGuest}>Continue as guest</p>
         </>
     )
 }

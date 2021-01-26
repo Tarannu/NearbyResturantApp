@@ -10,7 +10,7 @@ const Nav = (props) => {
                     <li>About us</li>
                 </NavLink>
 
-                <NavLink className="NavItem" to="/">
+                <NavLink className="NavItem" to="/home">
                     <li>Home</li>
                 </NavLink>
             </ul>

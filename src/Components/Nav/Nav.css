@@ -18,6 +18,6 @@
     color: white;
 }
 
-.Nav .active, a:hover{
+a.active, a:hover{
     font-weight: bold;
 }
