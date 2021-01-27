@@ -1,0 +1,16 @@
+.SearchBar{
+    display: inline-flex;
+    background-color: tomato;
+    padding: 20px;
+}
+
+.SearchBox{
+    position: absolute;
+    top: 10%;
+
+}
+
+.SearchIcon{
+    font-size: 30px;
+    align-items: center;
+}

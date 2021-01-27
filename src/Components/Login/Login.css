@@ -32,3 +32,11 @@
     margin-top: 30px;
     font-size: 14px;
 }
+
+.LoginValidationError{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-self: center;
+    padding: 10px;
+}

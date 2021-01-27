@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Input from '../../components/Input/Input';
 import Button from '../Button/Button';
+import Spinner from '../../components/Spinner/Spinner';
 import axios from '../../axios';
 import './Register.css';
 
 const Register = (props) => {
-    const[validationError, setValidationError] = useState(''); 
     const [formData, setFormData] = useState({
         dataFields: {
             firstName: {
@@ -85,14 +85,12 @@ const Register = (props) => {
             },
         },
         isFormValid: false,
-        authenticated: false,
-    })
+    });
+    const[validationError, setValidationError] = useState(''); 
+    const [authenticated, setAuthenticated] = useState(false);
+    const [userAlreadyExists, setUserAlreadyExists] = useState(false);
 
     // using useEffect hook to register users to the database
-
-    useEffect(() => {
-        console.log('inside useEffect');
-    },[formData.isFormValid])
 
     // validate the input
     const validated = ( value, rules ) => {
@@ -121,7 +119,7 @@ const Register = (props) => {
         setValidationError('');
         const user = {
             username: formData.dataFields.email.value,
-            passoword: formData.dataFields.password.value,
+            password: formData.dataFields.password.value,
             firstName: formData.dataFields.firstName.value,
             lastName: formData.dataFields.lastName.value,
             email: formData.dataFields.email.value,
@@ -143,6 +141,7 @@ const Register = (props) => {
                             console.log(response);
                         });
                     } else{
+                        setUserAlreadyExists(true);
                         setValidationError('User already exists. Cannot register.');
                     }
                 })
@@ -168,6 +167,10 @@ const Register = (props) => {
             formDataIsValid = updatedDataFields[field].valid && formDataIsValid;
         }
         setFormData({dataFields: updatedDataFields, isFormValid: formDataIsValid});
+    }
+
+    const redirectToLoginPage = () => {
+        props.history.goBack();
     }
 
 
@@ -203,6 +206,7 @@ const Register = (props) => {
             <div className="RegisterPage">
                 {form}
                 <p className="ValidationError">{validationError}</p>
+                {userAlreadyExists ? <div><p>Want to log in?</p><Button clicked={redirectToLoginPage}>Login</Button></div>: null}
              </div>
         </div>
         

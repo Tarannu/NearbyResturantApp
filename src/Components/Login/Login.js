@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
+import Spinner from '../../components/Spinner/Spinner';
+import axios from '../../axios';
 import './Login.css';
 
 const Login = (props) => {
@@ -27,12 +29,11 @@ const Login = (props) => {
             password: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
+                    type: 'password',
                     placeholder: 'Enter password',
                     label: 'Password',
                 },
                 value: '',
-                secretValue: '',
                 validationRules: {
                     required: true,
                     mustMatch: true,
@@ -42,10 +43,11 @@ const Login = (props) => {
             }
         },
         validDataEntered: false,
+        loading: false,
     });
-
+    const [validationError, setValidationError] = useState('');
     const [authenticated, setAuthenticated] = useState(false);
-
+    // Hackerrank api problem solved.
     const getTotalGoals = async (year, team) => {
         const BaseURL = 'https://jsonmock.hackerrank.com/api/football_matches';
         const resJson = await fetch(`${BaseURL}?year=${year}&team1=${team}`);
@@ -97,24 +99,11 @@ const Login = (props) => {
         props.history.push('/search-and-result')
     }
 
-    const loginHandler = (event) => {
-        event.preventDefault();
-    }
-
     // handle input
     const inputChangeHandler = (event, inputIdentifier) => {
         const updatedDataFields = {...formData.dataFields};
         const updatedField= {...updatedDataFields[inputIdentifier]};
-        if(inputIdentifier === 'password'){
-            updatedField.secretValue = event.target.value;
-            let encryptedString = '';
-            for(let i=0;i<event.target.value.length; i++){
-                encryptedString+= '*';
-            }
-            updatedField.value = encryptedString;
-        } else {
-            updatedField.value = event.target.value;
-        }
+        updatedField.value = event.target.value;
 
         updatedField.valid = validated(updatedField.value, updatedField.validationRules);
         updatedField.touched = true;
@@ -128,12 +117,41 @@ const Login = (props) => {
     }
 
     // handle Login button click
-    const loginButtonHandler = (event) => {
+    const loginButtonHandler = async (event) => {
         event.preventDefault();
-        // if(formData.validDataEntered){
-        //     console.log('Valid data enetered. Authenticating user...')
-        // }
-        getTotalGoals(2011, 'Ac Milan');
+        if(formData.dataFields.email.value === "" && formData.dataFields.password.value === ""){
+            setValidationError("Please, enter username/passoword to log in.");
+        } else{
+            setFormData(formData.loading = true);
+            if(formData.validDataEntered){
+                //const userJson = await fetch(`https://restaurant-app-users-default-rtdb.firebaseio.com/users.json`);
+                //const user = await userJson.json();
+                const users = await axios.get(`/users.json`);
+                const userArray = [];
+                for(let key in users.data){
+                    userArray.push([users.data[key]]);
+                }
+                let validUser = false;
+                for(let i=0;i<userArray.length;i++){
+                    if((userArray[i][0].username === formData.dataFields.email.value) && 
+                        (userArray[i][0].password === formData.dataFields.password.value)){
+                            validUser = true;
+                        }
+                }
+                
+                if(validUser){
+                    setAuthenticated(true);
+                    props.history.push('/search-and-result')
+                } else {
+                    setValidationError("Email/password was wrong.");
+                    setFormData(formData.loading = false);
+                }
+
+            }
+        }
+
+        // This is for the api problem on Hackerrank
+        //getTotalGoals(2011, 'Ac Milan');
 
     }
 
@@ -169,6 +187,7 @@ const Login = (props) => {
                 )
             })}
             <Button>Login</Button>
+            <p className="LoginValidationError">{validationError}</p>
         </form>
     )
     
@@ -187,7 +206,9 @@ const Login = (props) => {
             </div>
             <p 
                 className="Guest" 
-                onClick={continueAsGuest}>Continue as guest</p>
+                onClick={continueAsGuest}>Continue as guest
+            </p>
+            {formData.loading ? <Spinner/> : null}
         </>
     )
 }
