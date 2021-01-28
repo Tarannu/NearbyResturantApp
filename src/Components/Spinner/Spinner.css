@@ -5,9 +5,9 @@
 }
 .Loader {
   color: tomato;
-  font-size: 11px;
+  font-size: 7px;
   text-indent: -99999em;
-  margin: 55px auto;
+  margin: 300px auto;
   position: relative;
   width: 10em;
   height: 10em;

@@ -89,6 +89,7 @@ const Register = (props) => {
     const[validationError, setValidationError] = useState(''); 
     const [authenticated, setAuthenticated] = useState(false);
     const [userAlreadyExists, setUserAlreadyExists] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     // using useEffect hook to register users to the database
 
@@ -127,6 +128,7 @@ const Register = (props) => {
 
         // either sign user up or generate error message
         if(formData.isFormValid){
+            setLoading(true);
             axios.get(`/users.json`)
                 .then(response => {
                     let alreadySignedUp = false;
@@ -138,10 +140,11 @@ const Register = (props) => {
                     if(alreadySignedUp === false){
                         axios.post('/users.json', user)
                         .then(response => {
-                            console.log(response);
+                            props.history.push('/search-and-result');
                         });
                     } else{
                         setUserAlreadyExists(true);
+                        setLoading(false);
                         setValidationError('User already exists. Cannot register.');
                     }
                 })
@@ -201,14 +204,18 @@ const Register = (props) => {
             <Button>Sign Up</Button>
         </form>
     return (
-        <div className="Register">
-            <p className="RegisterTitle">Register for more actions and easy checkouts</p>
-            <div className="RegisterPage">
-                {form}
-                <p className="ValidationError">{validationError}</p>
-                {userAlreadyExists ? <div><p>Want to log in?</p><Button clicked={redirectToLoginPage}>Login</Button></div>: null}
-             </div>
-        </div>
+        <>
+            {loading ? <Spinner/> : (
+                <div className="Register">
+                    <p className="RegisterTitle">Register for more actions and easy checkouts</p>
+                    <div className="RegisterPage">
+                        {form}
+                        <p className="ValidationError">{validationError}</p>
+                        {userAlreadyExists ? <div><p>Want to log in?</p><Button clicked={redirectToLoginPage}>Login</Button></div>: null}
+                    </div>
+                </div>
+            )}
+        </>
         
     )
 }

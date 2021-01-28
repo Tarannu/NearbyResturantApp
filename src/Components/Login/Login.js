@@ -43,10 +43,10 @@ const Login = (props) => {
             }
         },
         validDataEntered: false,
-        loading: false,
     });
     const [validationError, setValidationError] = useState('');
     const [authenticated, setAuthenticated] = useState(false);
+    const [loading, setLoading] = useState(false);
     // Hackerrank api problem solved.
     const getTotalGoals = async (year, team) => {
         const BaseURL = 'https://jsonmock.hackerrank.com/api/football_matches';
@@ -122,8 +122,8 @@ const Login = (props) => {
         if(formData.dataFields.email.value === "" && formData.dataFields.password.value === ""){
             setValidationError("Please, enter username/passoword to log in.");
         } else{
-            setFormData(formData.loading = true);
             if(formData.validDataEntered){
+                setLoading(true);
                 //const userJson = await fetch(`https://restaurant-app-users-default-rtdb.firebaseio.com/users.json`);
                 //const user = await userJson.json();
                 const users = await axios.get(`/users.json`);
@@ -144,7 +144,7 @@ const Login = (props) => {
                     props.history.push('/search-and-result')
                 } else {
                     setValidationError("Email/password was wrong.");
-                    setFormData(formData.loading = false);
+                    setLoading(false);;
                 }
 
             }
@@ -194,21 +194,24 @@ const Login = (props) => {
     // return statement
     return (
         <>
-            <div className="Login">
-                <p className="LoginText">Login</p>
-                {form}
-                <div className="NotRegistered">
-                    <p>Not Registered Yet?</p>
-                    <p 
-                        className="RegisterText"
-                        onClick={registerClickHandler}>Register</p>
+        {loading ? <Spinner /> : (
+            <>
+                <div className="Login">
+                    <p className="LoginText">Login</p>
+                    {form}
+                    <div className="NotRegistered">
+                        <p>Not Registered Yet?</p>
+                        <p 
+                            className="RegisterText"
+                            onClick={registerClickHandler}>Register</p>
+                    </div>
                 </div>
-            </div>
-            <p 
-                className="Guest" 
-                onClick={continueAsGuest}>Continue as guest
-            </p>
-            {formData.loading ? <Spinner/> : null}
+                <p 
+                    className="Guest" 
+                    onClick={continueAsGuest}>Continue as guest
+                </p>
+            </>
+            )}
         </>
     )
 }
