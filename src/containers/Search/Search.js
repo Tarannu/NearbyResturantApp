@@ -74,6 +74,12 @@ const Search = () => {
     });
 
   }
+
+  const handleSort = (value) => {
+    setSortBy(value);
+    console.log(sortBy);
+    searchFunc(food,location,sortBy);
+  };
  
 
   return (
@@ -94,7 +100,8 @@ const Search = () => {
         </select>
       </div>
        {results.length > 0 ? <p className="SearchResults">Search Results</p> : null}
-       {restaurants}
+       {/* {restaurants} */}
+       <Restaurant results={results} onSortChanged={handleSort}/>
     </div>
   );
 };

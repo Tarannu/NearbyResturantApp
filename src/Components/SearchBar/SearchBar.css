@@ -5,8 +5,9 @@
 }
 
 .InputBox{
-    width: 250px;
+    width: 75%;
     height: 20px;
+    margin-right: 5px;
 }
 
 .SearchButton, .InputBox{
@@ -22,6 +23,7 @@
     text-align: center;
     padding: 5px;
     box-sizing: border-box;
+    width: 150px;
 }
 
 .SearchButton:hover, .InputBox:hover{

@@ -6,6 +6,7 @@ import Register from './components/Register/Register';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Search from '../src/containers/Search/Search';
+import ResDetails from '../src/components/ResDetails/ResDetails';
 import './App.css';
 
 const App = (props) => {
@@ -16,7 +17,8 @@ const App = (props) => {
               <Route path="/about" component={About}/>
               <Route path="/register" component={Register}/>
               <Route path="/search-and-result" component={Search}/>
-              <Route path="/" component={Home}/>
+              <Route path="/search-result/:id/res-details" component={ResDetails}/>
+              <Route path="/" exact component={Home}/>
           </Switch>
           <Footer/>
       </div>
