@@ -30,3 +30,29 @@
 .RestaurantLocation{
     line-height: 25px;
 }
+.resturaunt-list-parent{
+  position:relative;
+  margin:40px auto 0;
+  width: 450px;
+  background-color:lightsalmon;
+  box-sizing: border-box;
+  padding: 10px;
+  font-family: sans-serif;
+  list-style: none;
+  color:white;
+}
+ol li{
+    display: flex;
+    text-align: justify;
+    background:rgba(255, 99, 71, 0.452);
+    color: #fff;
+    padding:10px 20px;
+    margin:5px 0;
+    transition: 0.5s;
+}
+
+ol li:nth-child(1):hover{
+    transform: scale(1.06);
+    background: tomato;
+    
+}

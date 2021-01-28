@@ -1,5 +1,6 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
+import './SearchBar.css'
 
 const SearchBar = ({
   location,
@@ -11,9 +12,9 @@ const SearchBar = ({
     e.preventDefault();
   };
   return (
-    <div className="SearchBar">
+    <div>
       <form onSubmit={handleSubmit}>
-        <div className="InputBox">
+        <div className="input-box">
           <input
             type="text"
             placeholder="Enter food type ..."
@@ -26,7 +27,7 @@ const SearchBar = ({
             placeholder="Enter Location ... "
           />
           {"    "}
-          <button className="SearchButton" style={{ padding: 10 }}>
+          <button className="searchButton" style={{ padding: 10 }}>
             <FiSearch
               name="search"
               style={{ fontSize: 20, alignItems: "center" }}
@@ -39,5 +40,6 @@ const SearchBar = ({
     </div>
   );
 };
+
 
 export default SearchBar;

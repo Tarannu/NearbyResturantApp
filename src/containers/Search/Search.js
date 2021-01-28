@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import Restaurant from "../../components/Restaurant/Restaurant";
+import SearchBar from "../../Components/SearchBar/SearchBar";
+import Restaurant from "../../Components/Restaurant/Restaurant";
 import zomato from "../../api/zomato";
 import Select from "react-select";
 
@@ -17,9 +17,7 @@ const Search = () => {
   const handleFoodChange = (e) => {
     setFood(e.target.value);
   };
-  const handleSortChange = (e) => {
-    setSort(e.target.value);
-  };
+  
 
   const searchFunc = async (loc, fd, sort) => {
     try {
@@ -31,7 +29,7 @@ const Search = () => {
 
       //sort logic will be here
       var getURL = "";
-      if (sort == "by review") {
+      if (sort.value === "by review") {
         getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}&sort=rating&order=desc`;
       } else getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}`;
       //this api get the food type
@@ -55,8 +53,7 @@ const Search = () => {
     e.preventDefault();
     searchFunc(location, food,sort);
   };
-  const handleClick = (e) => {};
-  const handleSelect = (value) => {
+  const handleSort = (value) => {
     setSort(value);
     console.log(sort);
     searchFunc(food,location,sort);
@@ -84,9 +81,9 @@ const Search = () => {
         onTermSubmit={handleSubmit}
       />
       <div style={{ fontSize: 14 }}>
-        <Select options={options} onChange={handleSelect} />
+        <Select options={options} onChange={handleSort} />
       </div>
-       {restaurants}
+       <Restaurant results={results} onSortChanged={handleSort}/>
     </div>
   );
 };

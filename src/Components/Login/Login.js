@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import Spinner from '../../components/Spinner/Spinner';
+import Input from '../../Components/Input/Input';
+import Button from '../../Components/Button/Button';
+import Spinner from '../../Components/Spinner/Spinner';
 import axios from '../../axios';
 import './Login.css';
 

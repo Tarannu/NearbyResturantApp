@@ -1,11 +1,12 @@
 import React from 'react'; 
 import { Route, Switch } from 'react-router-dom';
 import Home from '../src/containers/Home/Home';
-import About from './components/About/About';
-import Register from './components/Register/Register';
-import Nav from './components/Nav/Nav';
-import Footer from './components/Footer/Footer';
+import About from './Components/About/About'
+import Register from './Components/Register/Register';
+import Nav from './Components/Nav/Nav';
+import Footer from './Components/Footer/Footer';
 import Search from '../src/containers/Search/Search';
+import ResDetails from './Components/ResDetails/ResDetails';
 import './App.css';
 
 const App = (props) => {
@@ -16,6 +17,7 @@ const App = (props) => {
               <Route path="/about" component={About}/>
               <Route path="/register" component={Register}/>
               <Route path="/search-and-result" component={Search}/>
+              <Route path="/search-and-result/:id" component={ResDetails}/>
               <Route path="/" component={Home}/>
           </Switch>
           <Footer/>

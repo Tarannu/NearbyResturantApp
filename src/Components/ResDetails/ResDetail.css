@@ -1,0 +1,22 @@
+.res-div{
+    align-content: center;
+    text-align: center;
+}
+h2{
+color: tomato;
+font-family: sans-serif;
+}
+.res-details{
+    padding-left: 20;
+    background-color: salmon;
+    margin: 20;
+}
+p{
+    
+    color: white;
+    font-family: sans-serif;
+
+}
+li{
+    list-style: none;
+}
