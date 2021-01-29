@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Input from '../../Components/Input/Input';
+import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Spinner from '../../Components/Spinner/Spinner';
 import axios from '../../axios';
