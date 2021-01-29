@@ -10,10 +10,12 @@
     height: 100%;
     vertical-align: middle;
     border-radius: 0.7rem;
+    color: black;
 }
 
 .Guest, .LoginText, .NotRegistered{
     font-weight: bold;
+    color: black;
 }
 
 .Guest {
@@ -24,6 +26,10 @@
     cursor: pointer;
 }
 
+.RegisterText{
+    color: black;
+}
+
 .NotRegistered{
     float: right;
     padding: 30px;
@@ -31,6 +37,7 @@
     position: relative;;
     margin-top: 30px;
     font-size: 14px;
+    color: black;
 }
 
 .LoginValidationError{

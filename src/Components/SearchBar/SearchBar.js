@@ -1,45 +1,35 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
-import './SearchBar.css'
+import './SearchBar.css';
 
-const SearchBar = ({
-  location,
-  onFoodChange,
-  onLocationChange,
-  onTermSubmit,
-}) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+const SearchBar = (props) => {
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="input-box">
-          <input
-            type="text"
-            placeholder="Enter food type ..."
-            onChange={onFoodChange}
-          />
-          {"    "}
-          <input
-            onChange={onLocationChange}
-            value={location}
+    <div className="SearchBar">
+        <input 
+          className="InputBox"
+          type="text"
+          placeholder="Enter food type ..."
+          onChange={props.onFoodChange}
+        />
+        <input
+            className="InputBox"
+            onChange={props.onLocationChange}
+            value={props.location}
             placeholder="Enter Location ... "
-          />
-          {"    "}
-          <button className="searchButton" style={{ padding: 10 }}>
+        />
+        <button 
+            className="SearchButton" 
+        >
             <FiSearch
               name="search"
-              style={{ fontSize: 20, alignItems: "center" }}
-              onClick={onTermSubmit}
-            />{" "}
-            Search{" "}
-          </button>
-        </div>
-      </form>
+              style={{ fontSize: 20, verticalAlign: "center" }}
+              onClick={props.handleSearchButton}
+            />
+            Search
+        </button>
     </div>
   );
 };
-
 
 export default SearchBar;

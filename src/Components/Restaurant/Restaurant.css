@@ -30,7 +30,11 @@
 .RestaurantLocation{
     line-height: 25px;
 }
-.resturaunt-list-parent{
+
+.Name{
+    color: black;
+}
+/* .resturaunt-list-parent{
   position:relative;
   margin:40px auto 0;
   width: 450px;
@@ -55,4 +59,4 @@ ol li:nth-child(1):hover{
     transform: scale(1.06);
     background: tomato;
     
-}
+} */

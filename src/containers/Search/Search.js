@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "../../Components/SearchBar/SearchBar";
-import Restaurant from "../../Components/Restaurant/Restaurant";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import Restaurant from "../../components/Restaurant/Restaurant";
 import zomato from "../../api/zomato";
 import Select from "react-select";
+import './Search.css';
 
 const Search = () => {
   const [food, setFood] = useState("");
   const [location, setLocation] = useState("");
   const [results, setResults] = useState([]);
-  const options = [{ label: "Sort by review", value: "by review" }];
-  const [sort, setSort] = useState("");
+  const options = [{ label: "---None---", value: "" }, { label: "Sort by review", value: "by review" }];
+  const [sortBy, setSortBy] = useState("");
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -17,7 +18,9 @@ const Search = () => {
   const handleFoodChange = (e) => {
     setFood(e.target.value);
   };
-  
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
 
   const searchFunc = async (loc, fd, sort) => {
     try {
@@ -29,7 +32,7 @@ const Search = () => {
 
       //sort logic will be here
       var getURL = "";
-      if (sort.value === "by review") {
+      if (sortBy == "by review") {
         getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}&sort=rating&order=desc`;
       } else getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}`;
       //this api get the food type
@@ -45,18 +48,19 @@ const Search = () => {
   };
   
   useEffect(() => {
-    searchFunc(location, food, sort);
-  }, [location, food,sort]);
+    searchFunc(location, food, sortBy);
+  }, [location, food, sortBy]);
   
   const handleSubmit = (e) => {
     console.log("It will take max 15 minutes to load otherwise please refresh");
     e.preventDefault();
-    searchFunc(location, food,sort);
+    searchFunc(location, food, sortBy);
   };
-  const handleSort = (value) => {
-    setSort(value);
-    console.log(sort);
-    searchFunc(food,location,sort);
+  const handleSearchButton = (e) => {};
+  const handleSelect = (element) => {
+    console.log(element.value);
+    setSortBy(element.value);
+    searchFunc(food, location, sortBy);
   };
   let restaurants = null;
   if(results.length > 0){
@@ -70,6 +74,12 @@ const Search = () => {
     });
 
   }
+
+  const handleSort = (value) => {
+    setSortBy(value);
+    console.log(sortBy);
+    searchFunc(food,location,sortBy);
+  };
  
 
   return (
@@ -78,12 +88,20 @@ const Search = () => {
         location={location}
         onLocationChange={handleLocationChange}
         onFoodChange={handleFoodChange}
-        onTermSubmit={handleSubmit}
+        handleSearchButton={handleSearchButton}
       />
-      <div style={{ fontSize: 14 }}>
-        <Select options={options} onChange={handleSort} />
+      <div>
+        <select 
+          className="SortBy"
+        >
+          {options.map(option =>{
+            return <option {...option}></option>
+          })}
+        </select>
       </div>
-       <Restaurant results={results} onSortChanged={handleSort}/>
+       {results.length > 0 ? <p className="SearchResults">Search Results</p> : null}
+       {restaurants}
+       {/* {results.length > 0 ? <Restaurant results={results} onSortChanged={handleSort}/>: null} */}
     </div>
   );
 };

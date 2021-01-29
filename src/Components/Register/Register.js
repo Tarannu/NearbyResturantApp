@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import Spinner from '../../Components/Spinner/Spinner';
+import Spinner from '../Spinner/Spinner';
 import axios from '../../axios';
 import './Register.css';
 

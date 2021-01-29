@@ -200,7 +200,7 @@ const Login = (props) => {
                     <p className="LoginText">Login</p>
                     {form}
                     <div className="NotRegistered">
-                        <p>Not Registered Yet?</p>
+                        <p className="RegisterText">Not Registered Yet?</p>
                         <p 
                             className="RegisterText"
                             onClick={registerClickHandler}>Register</p>

@@ -1,16 +1,36 @@
 .SearchBar{
     display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.InputBox{
+    width: 75%;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.SearchButton, .InputBox{
+    font-size: 16px;
+    border: 1px solid tomato;
+    border-radius: 0.5rem;
+    margin-top: 10px;
+    outline: none;
+}
+
+.SearchButton{
+    height: 40px;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+    min-width: 100px;
+}
+
+.SearchButton:hover, .InputBox:hover{
     background-color: tomato;
-    padding: 20px;
+    color: white;
 }
 
-.SearchBox{
-    position: absolute;
-    top: 10%;
-
-}
-
-.SearchIcon{
-    font-size: 30px;
-    align-items: center;
+.SearchButton:focus, .InputBox:focus{
+    border-color: tomato;
 }

@@ -1,0 +1,15 @@
+.SortBy{
+    height: 40px;
+    width: 100%;
+    text-align-last: center;
+    font-size: 16px;
+    border: 1px solid tomato;
+    border-radius: 0.5rem;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.SearchResults{
+    text-align: left;
+    font-weight: bold;
+}
