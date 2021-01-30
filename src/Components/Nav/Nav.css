@@ -1,0 +1,23 @@
+.Nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+    background-color: tomato;
+}
+
+.NavLinks{
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.Nav a{
+    text-decoration: none;
+    color: white;
+}
+
+a.active, a:hover{
+    font-weight: bold;
+}

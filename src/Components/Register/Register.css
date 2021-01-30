@@ -1,0 +1,20 @@
+.Register{
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    height: 110vh;
+    overflow: scroll;
+}
+.RegisterPage{
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    width: 400px;
+    border-radius: 0.7rem;
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.RegisterTitle{
+    font-weight: bold;
+}

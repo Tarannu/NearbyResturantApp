@@ -1,0 +1,42 @@
+.Form{
+    border: none;
+    border-radius: 1.5rem;
+}
+
+.Login{
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    width: 350px;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 0.7rem;
+}
+
+.Guest, .LoginText, .NotRegistered{
+    font-weight: bold;
+}
+
+.Guest {
+    text-align: left;
+}
+
+.Guest:hover, .RegisterText:hover{
+    cursor: pointer;
+}
+
+.NotRegistered{
+    float: right;
+    padding: 30px;
+    margin-bottom: auto;
+    position: relative;;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.LoginValidationError{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-self: center;
+    padding: 10px;
+}
