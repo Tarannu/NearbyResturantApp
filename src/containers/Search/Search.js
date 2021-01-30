@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../Components/SearchBar/SearchBar";
-import Restaurant from "../../Components/Restaurant/Restaurant";
+import ResultSection from "../../Components/Restaurant/Restaurant";
 import zomato from "../../api/zomato";
 import Select from "react-select";
-import './Search.css';
 
-const Search = () => {
+const Home = () => {
   const [food, setFood] = useState("");
   const [location, setLocation] = useState("");
   const [results, setResults] = useState([]);
-  const options = [{ label: "---None---", value: "" }, { label: "Sort by review", value: "by review" }];
-  const [sortBy, setSortBy] = useState("");
+  const options = [{ label: "sort by review", value: "by review" }];
+  const [sort, setSort] = useState("");
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -18,11 +17,9 @@ const Search = () => {
   const handleFoodChange = (e) => {
     setFood(e.target.value);
   };
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
-  };
 
   const searchFunc = async (loc, fd, sort) => {
+    console.log("inside search");
     try {
       //location key is extracted from this api
       const city_response = await zomato.get(`/locations?query=${loc}`);
@@ -30,15 +27,18 @@ const Search = () => {
         city_response.data.location_suggestions[0].entity_id
       );
 
-      //sort logic will be here
+      //sort logic is here
       var getURL = "";
-      if (sortBy == "by review") {
+      if (sort.value === "by review") {
+        console.log("Inside if state sort === by review")
         getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}&sort=rating&order=desc`;
-      } else getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}`;
+      } else { getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}`;}
+      
       //this api get the food type
       const food_response = await zomato.get(getURL);
-      
+
       const items = food_response.data.restaurants;
+      console.log("ITEM IS :  ", items);
       if (items.length) {
         setResults(items);
       }
@@ -48,39 +48,21 @@ const Search = () => {
   };
   
   useEffect(() => {
-    searchFunc(location, food, sortBy);
-  }, [location, food, sortBy]);
+    searchFunc(location, food, sort);
+  }, [location, food,sort]);
   
   const handleSubmit = (e) => {
     console.log("It will take max 15 minutes to load otherwise please refresh");
     e.preventDefault();
-    searchFunc(location, food, sortBy);
+    searchFunc(location, food,sort);
   };
-  const handleSearchButton = (e) => {};
-  const handleSelect = (element) => {
-    console.log(element.value);
-    setSortBy(element.value);
-    searchFunc(food, location, sortBy);
+  
+  const handleSelect = (value) => {
+    setSort(value);
+    console.log(sort.value);
+    console.log("first time double click to sort");
+  
   };
-  let restaurants = null;
-  if(results.length > 0){
-    restaurants = results.map(restaurant => {
-      return (
-        <Restaurant
-          key={restaurant.restaurant.id}
-          restaurant={restaurant.restaurant}
-       />
-      )
-    });
-
-  }
-
-  const handleSort = (value) => {
-    setSortBy(value);
-    console.log(sortBy);
-    searchFunc(food,location,sortBy);
-  };
- 
 
   return (
     <div style={{ padding: 50 }}>
@@ -88,22 +70,15 @@ const Search = () => {
         location={location}
         onLocationChange={handleLocationChange}
         onFoodChange={handleFoodChange}
-        handleSearchButton={handleSearchButton}
+        onTermSubmit={handleSubmit}
       />
-      <div>
-        <select 
-          className="SortBy"
-        >
-          {options.map(option =>{
-            return <option {...option}></option>
-          })}
-        </select>
+      <div style={{ fontSize: 14 }}>
+        <Select options={options} onChange={handleSelect} />
       </div>
-       {results.length > 0 ? <p className="SearchResults">Search Results</p> : null}
-       {/* {restaurants} */}
-       <Restaurant results={results} onSortChanged={handleSort}/>
+
+      <ResultSection results={results} onSortChanged={handleSelect} />
     </div>
   );
 };
 
-export default Search;
+export default Home;
