@@ -1,16 +1,20 @@
 import React,{useState,useEffect}  from 'react';
 import './ResDetails.css';
-import zomato from '../../api/zomato'
+import zomato from '../../api/zomato';
+import MenuOrder from '../../Components/MenuOrder/MenuOrder'
 
 const ResDetails = ({match}) => {
     const [results, setResults] = useState([]);
+    const [menu,setMenu]=useState([]);
+    const [resID,setResID] =useState([]);
   
   const detailsFunc = async () => {
     try {
       //location key is extracted from this api
       const res = await zomato.get(`/restaurant?res_id=${match.params.id}`);
+      setResID(match.params.id);
       const details = res.data;
-      console.log("Detail IS :  ", details);
+      console.log("Detail Is :  ", details);
       if (details) {
         setResults(details);
       }
@@ -27,7 +31,7 @@ const ResDetails = ({match}) => {
   useEffect(() => {
     detailsFunc();
   }, []);
-
+//<p>Located at {results.location.address} </p>
   return (
     <div>
       <div className="res-div">
@@ -37,19 +41,12 @@ const ResDetails = ({match}) => {
         <p >
           Open Through {results.timings}
         </p>
-        <p>Located at</p>
+        
         <p>Contact {results.phone_numbers} </p>
         </div>
       </div>
-
-      <div className="order-selection">
-        <h2>Their daily menu is given for you to select for order</h2>
-        <ul>
-          <li>Cheese Burger</li>
-          <li>Ham Burger</li>
-        </ul>
-        <button>Place Order</button>
-      </div>
+      <MenuOrder resID={resID}/>
+      
     </div>
   );
 }
