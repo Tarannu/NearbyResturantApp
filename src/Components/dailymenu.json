@@ -1,0 +1,452 @@
+{
+    [
+      {
+        "daily_menu": {
+          "daily_menu_id": "21132666",
+          "start_date": "2021-01-30 00:00:00",
+          "end_date": "2021-01-30 23:59:59",
+          "name": "",
+          "dishes": [
+            {
+              "dish": {
+                "dish_id": "710088816",
+                "name": "Dýňová polévka s chilli a zázvorem   ",
+                "price": "49 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088817",
+                "name": "Dýňová polévka s chilli a zázvorem   ",
+                "price": "49 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088818",
+                "name": "Pumpkin soup with chilli and ginger",
+                "price": "49 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088819",
+                "name": "Pumpkin soup with chilli and ginger",
+                "price": "49 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088820",
+                "name": "Grilovaná telecí játra s karamelovou cibulkou, vařené brambory s pažitkou, tatarka ",
+                "price": "169 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088821",
+                "name": "Grilled veal liver with caramelized onions, boiled potatoes with chives and tartar sauce",
+                "price": "169 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088822",
+                "name": "Grilled veal liver with caramelized onions, boiled potatoes with chives and tartar sauce",
+                "price": "169 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088823",
+                "name": "Vepřové výpečky, bramborový a houskový knedlík, bílé zelí",
+                "price": "145 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088824",
+                "name": "Listový salát s citrónovým dresinkem, smažená kuřecí prsa v panko strouhance, dip ze zakysané smetany s koprem, okurkou a česnekem, pita chléb",
+                "price": "159 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088825",
+                "name": "Vepřové výpečky, bramborový a houskový knedlík, bílé zelí",
+                "price": "145 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088826",
+                "name": "Listový salát s citrónovým dresinkem, smažená kuřecí prsa v panko strouhance, dip ze zakysané smetany s koprem, okurkou a česnekem, pita chléb",
+                "price": "159 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088827",
+                "name": "Roasted pork with potato dumplings, bread dumplings and white cabbage",
+                "price": "145 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088828",
+                "name": "Mixed lettuce with lemon dressing, fried chicken, pita bread and sour cream dip with cucumber, dill and garlic",
+                "price": "159 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088829",
+                "name": "Roasted pork with potato dumplings, bread dumplings and white cabbage",
+                "price": "145 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088830",
+                "name": "Mixed lettuce with lemon dressing, fried chicken, pita bread and sour cream dip with cucumber, dill and garlic",
+                "price": "159 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088831",
+                "name": "Trhaná slepice na paprice, čerstvé těstoviny",
+                "price": "189 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088832",
+                "name": "Řízek z přeštického prasátka, bramborová kaše s máslem a smetanou",
+                "price": "199 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088833",
+                "name": "Trhaná slepice na paprice, čerstvé těstoviny",
+                "price": "189 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088834",
+                "name": "Řízek z přeštického prasátka, bramborová kaše s máslem a smetanou",
+                "price": "199 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088835",
+                "name": "Pulled chicken with pepper cream sauce and fresh pasta",
+                "price": "189 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088836",
+                "name": "Pork schnitzel with potato puree with cream and butter",
+                "price": "199 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088837",
+                "name": "Pulled chicken with pepper cream sauce and fresh pasta",
+                "price": "189 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088838",
+                "name": "Pork schnitzel with potato puree with cream and butter",
+                "price": "199 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088839",
+                "name": "Brynzové halušky s osmaženou cibulkou, se slaninou nebo bez   ",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088840",
+                "name": "Trhané kuřecí maso, zeleninový tažin, kuskus, dip ze zakysané smetany",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088841",
+                "name": "Brynzové halušky s osmaženou cibulkou, se slaninou nebo bez   ",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088842",
+                "name": "Trhané kuřecí maso, zeleninový tažin, kuskus, dip ze zakysané smetany",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088843",
+                "name": "Slovak style gnocchi with sheep cheese and fried onions, with or without bacon",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088844",
+                "name": "Pulled chicken with vegetable tajine, cous cous and sour cream dip",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088845",
+                "name": "Slovak style gnocchi with sheep cheese and fried onions, with or without bacon",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088846",
+                "name": "Pulled chicken with vegetable tajine, cous cous and sour cream dip",
+                "price": "139 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "710088847",
+                "name": "Grilovaná telecí játra s karamelovou cibulkou, vařené brambory s pažitkou, tatarka ",
+                "price": "169 Kč"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "daily_menu": {
+          "daily_menu_id": "17178053",
+          "start_date": "2021-01-30 00:00:00",
+          "name": "Polévky",
+          "dishes": [
+            {
+              "dish": {
+                "dish_id": "634207002",
+                "name": "Bramboračka s hříbky",
+                "price": "45 Kč"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "daily_menu": {
+          "daily_menu_id": "17178059",
+          "start_date": "2021-01-30 00:00:00",
+          "name": "Předkrmy / Jídla k pivu",
+          "dishes": [
+            {
+              "dish": {
+                "dish_id": "634206981",
+                "name": "Kachní paštika s brusinkami, mandlemi a cibulovou marmeládou",
+                "price": "89 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206982",
+                "name": "Studený roastbeef s hořčičnou omáčkou a okurkou",
+                "price": "99 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206983",
+                "name": "Rillettes z vepřového masa s hořčičnou omáčkou",
+                "price": "85 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206984",
+                "name": "Nakládaný hermelín",
+                "price": "85 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206985",
+                "name": "Nakládané olomoucké tvarůžky  ",
+                "price": "79 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206986",
+                "name": "Domácí škvarková pomazánka s cibulkou",
+                "price": "65 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206987",
+                "name": "Tlačenka s cibulkou a octem",
+                "price": "59 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206988",
+                "name": "Jehněčí klobásky s hořčičným dipem a malým zelným salátem",
+                "price": "89 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206989",
+                "name": "Špekáčky na černém pivu",
+                "price": "89 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206990",
+                "name": "Slané pražené mandle (80 g)",
+                "price": "79 Kč"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "daily_menu": {
+          "daily_menu_id": "17178061",
+          "start_date": "2021-01-30 00:00:00",
+          "name": "Hlavní chody",
+          "dishes": [
+            {
+              "dish": {
+                "dish_id": "634206991",
+                "name": "Dančí svíčková s karlovarským knedlíkem a brusinkami",
+                "price": "239 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206992",
+                "name": "Grilovaný flapsteak s gratinovanými bramborami a zelenými fazolkami, omáčka z pečeného česneku",
+                "price": "249 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206993",
+                "name": "Marinovaná pečená vepřová žebra s česnekovou majonézou",
+                "price": "196 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206994",
+                "name": "Medailonky z vepřové panenky s pečenou paprikou, brambory Grenaille a omáčka s rozmarýnem",
+                "price": "229 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206995",
+                "name": "Rolované farmářské kuře marinované v brandy, smetanová br. kaše s list. špenátem",
+                "price": "165 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206996",
+                "name": "Bůček na černém pivu s červeným zelím a bramborovými špalíky",
+                "price": "149 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206997",
+                "name": "Smažený řízek z přeštického prasátka s lehkým bramborovým salátem",
+                "price": "185 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "634206998",
+                "name": "Naše bramborové špalíky se smetanovým listovým špenátem",
+                "price": "99 Kč"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "daily_menu": {
+          "daily_menu_id": "17178064",
+          "start_date": "2021-01-30 00:00:00",
+          "name": "Saláty",
+          "dishes": [
+            {
+              "dish": {
+                "dish_id": "635121494",
+                "name": "Salát se smaženými kuřecími proužky",
+                "price": "129 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "635121495",
+                "name": "Salát s roastbeefem a pikantním česnekovým dresinkem",
+                "price": "149 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "635121496",
+                "name": "Salát z mladého špenátu a hrášku s šalotkou a čerstvým kozím sýrem",
+                "price": "129 Kč"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "daily_menu": {
+          "daily_menu_id": "17191110",
+          "start_date": "2021-01-30 00:00:00",
+          "name": "Dezert",
+          "dishes": [
+            {
+              "dish": {
+                "dish_id": "631103520",
+                "name": "Čokoládová pěna s višněmi marinovanými v griotce",
+                "price": "55 Kč"
+              }
+            },
+            {
+              "dish": {
+                "dish_id": "631103521",
+                "name": "Šlehaná zakysaná smetana s medem a čerstvým ovocem, máta",
+                "price": "55 Kč"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "status": "success"
+  }

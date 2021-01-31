@@ -5,7 +5,6 @@ import MenuOrder from '../../Components/MenuOrder/MenuOrder'
 
 const ResDetails = ({match}) => {
     const [results, setResults] = useState([]);
-    const [menu,setMenu]=useState([]);
     const [resID,setResID] =useState([]);
   
   const detailsFunc = async () => {

@@ -1,0 +1,25 @@
+zl li{
+    display: flex;
+    text-align: justify;
+    background:rgba(255, 99, 71, 0.452);
+    color: #fff;
+    padding:10px 20px;
+    margin:5px 0;
+    transition: 0.5s;
+}
+
+zl li:nth-child(1):hover{
+    transform: scale(1.06);
+    background: tomato;
+    
+}
+.order-button{
+    font-size: 16px;
+    color: #fff;
+    border: 1px solid tomato;
+    background: salmon;
+    border-radius: 0.5rem;
+    margin-top: 10px;
+    outline: none;
+
+}
