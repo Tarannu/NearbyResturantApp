@@ -1,22 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import "./Restaurant.css";
 
 const Restaurant = (props) => {
     return(
-        <div 
+        <div
             className="Restaurant" 
-            onChange={props.selected}
+            // onClick={props.selected}
         >
             <div className="NameAndThumbnail">
-                <p>{props.restaurant.name}</p>
-                { props.restaurant.thumb ? <img src={props.restaurant.thumb} alt={props.restaurant.name}/> : null}
+                <NavLink className="Name" to={`/${props.id}/res-details`}><p>{props.restaurantName}</p></NavLink>
+                { props.thumbnail ? <img src={props.thumbnail} alt={props.restaurantNname}/> : null}
             </div>  
             <div className="RestaurantLocation">
-                <p>{props.restaurant.location.address}</p>
+                <p>{props.restaurantAddress}</p>
                 {/* <p>{props.restaurant.location}</p> */}
             </div>
-            <p>Rating:&emsp;{props.restaurant.user_rating.aggregate_rating}</p>
+            <p>Rating:&emsp;{props.rating.aggregate_rating}</p>
         </div>
     )
 //     return results ? (

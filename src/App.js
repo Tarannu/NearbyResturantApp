@@ -17,7 +17,7 @@ const App = (props) => {
               <Route path="/about" component={About}/>
               <Route path="/register" component={Register}/>
               <Route path="/search-and-result" component={Search}/>
-              <Route path="/search-and-result/:id/res-details" component={ResDetails}/>
+              <Route path="/:id/res-details" component={ResDetails}/>
               <Route path="/" component={Home}/>
           </Switch>
           <Footer/>

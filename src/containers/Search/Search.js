@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Restaurant from "../../components/Restaurant/Restaurant";
 import zomato from "../../api/zomato";
-import Select from "react-select";
+import ResDetails from "../../components/ResDetails/ResDetails";
 import './Search.css';
 
-const Search = () => {
+const Search = (props) => {
   const [food, setFood] = useState("");
   const [location, setLocation] = useState("");
   const [results, setResults] = useState([]);
@@ -17,9 +17,6 @@ const Search = () => {
   };
   const handleFoodChange = (e) => {
     setFood(e.target.value);
-  };
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
   };
 
   const searchFunc = async (loc, fd, sort) => {
@@ -57,18 +54,18 @@ const Search = () => {
     searchFunc(location, food, sortBy);
   };
   const handleSearchButton = (e) => {};
-  const handleSelect = (element) => {
-    console.log(element.value);
-    setSortBy(element.value);
-    searchFunc(food, location, sortBy);
-  };
+
   let restaurants = null;
   if(results.length > 0){
     restaurants = results.map(restaurant => {
       return (
         <Restaurant
           key={restaurant.restaurant.id}
-          restaurant={restaurant.restaurant}
+          id={restaurant.restaurant.id}
+          restaurantName={restaurant.restaurant.name}
+          restaurantAddress={restaurant.restaurant.location.address}
+          thumbnail={restaurant.restaurant.thumb}
+          rating={restaurant.restaurant.user_rating}
        />
       )
     });
@@ -81,7 +78,6 @@ const Search = () => {
     searchFunc(food,location,sortBy);
   };
  
-
   return (
     <div style={{ padding: 50 }}>
       <SearchBar
@@ -93,6 +89,7 @@ const Search = () => {
       <div>
         <select 
           className="SortBy"
+          onChange={handleSort}
         >
           {options.map(option =>{
             return <option {...option}></option>

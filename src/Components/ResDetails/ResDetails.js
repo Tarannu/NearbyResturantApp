@@ -4,7 +4,7 @@ import zomato from '../../api/zomato'
 
 const ResDetails = ({match}) => {
     const [results, setResults] = useState([]);
-  
+    console.log("Inside ResDetails");
   const detailsFunc = async () => {
     try {
       //location key is extracted from this api
@@ -14,7 +14,7 @@ const ResDetails = ({match}) => {
       if (details) {
         setResults(details);
       }
-      const menu = await zomato.get(`/dailymenu?res_id=$16931323`);
+      const menu = await zomato.get(`/dailymenu?res_id=${match.params.id}`);
       const menuDetails = menu.data;
       console.log("Menu IS :  ", menuDetails);
       if (menuDetails) {
@@ -54,4 +54,4 @@ const ResDetails = ({match}) => {
   );
 }
 
-export default ResDetails
+export default ResDetails;

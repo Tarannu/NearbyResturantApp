@@ -12,8 +12,8 @@
     font-size: 18px;
     font-weight: bold;
     display: inline-flex;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
 }
 
 .NameAndThumbnail img{
@@ -28,11 +28,21 @@
 }
 
 .RestaurantLocation{
-    line-height: 25px;
+    line-height: 15px;
+}
+
+.Restaurant:hover{
+    transform: scale(1.06);
+    transition: 0.3s;
+    cursor: pointer;
 }
 
 .Name{
     color: black;
+}
+
+.Name:visited{
+    color: grey;
 }
 /* .resturaunt-list-parent{
   position:relative;
