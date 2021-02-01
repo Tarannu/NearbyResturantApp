@@ -46,6 +46,7 @@ const ResDetails = ({match}) => {
       </div>
       <MenuOrder resID={resID}/>
       
+      
     </div>
   );
 }

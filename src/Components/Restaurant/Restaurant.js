@@ -14,7 +14,7 @@ const Restaurant = ({ results,onSortChanged }) => {
               <li> It has {item.restaurant.user_rating.aggregate_rating}{" "} reviews </li>
               </ol>
           ))}
-          <button className="load-more">Load More</button> 
+          
           </div> 
           
         </div>

@@ -13,21 +13,13 @@ const SearchBar = (props) => {
           onChange={props.onFoodChange}
         />
         <input
+       
             className="InputBox"
             onChange={props.onLocationChange}
             value={props.location}
             placeholder="Enter Location ... "
         />
-        <button 
-            className="SearchButton" 
-        >
-            <FiSearch
-              name="search"
-              style={{ fontSize: 20, verticalAlign: "center" }}
-              onClick={props.handleSearchButton}
-            />
-            Search
-        </button>
+        
     </div>
   );
 };

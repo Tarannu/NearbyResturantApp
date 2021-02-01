@@ -6,11 +6,12 @@ import './MenuOrder.css'
 const MenuOrder = ({ resID }) => {
 const [menus, setMenu] = useState([]);
 const [message,setMessage]=useState("");
+const [order,setOrder]=useState([]);
 
   const menuFunction = async () => {
     try {
       const res = await axios.get(
-        "https://developers.zomato.com/api/v2.1/dailymenu?res_id=16507624",
+        `https://developers.zomato.com/api/v2.1/dailymenu?res_id=${resID}`,
         {
           headers: {
             "user-key": "c954fb5d1007bff9c2929e70c676181b",
@@ -36,24 +37,26 @@ const [message,setMessage]=useState("");
   useEffect(() => {
     menuFunction();
   }, [resID]);
-  const displayOrder=()=>{
-      setMessage("You order has been placed please pay at the venue");
+  const onOrderChange=(e)=>{
+    setOrder(e.target.value);
   }
+  const displayOrder=()=>{
+      setMessage(`You order has been placed please pay at the venue and your order is ${order}`);
+      console.log("Order is ",order);
 
+  }
+ 
+  
   return (
     <div>
-     <div>
+     
+        <div>
         <div className="order-selection">
-          <h2>Todays menu is given for you to select for order</h2>
-          <div>{menus[1].daily_menu.dishes.map(item=>
-            (<zl className="menu-list">
-              <li id={item.dish.dish_id}><b>Dish name is :</b> {item.dish.name} and{" "}<b>price is</b> {item.dish.price}</li>
-            </zl>
-            )
-        )}</div>
-          
+        <h2>Please insert your order below</h2>
+        <input onChange={onOrderChange}/>{"  "}
+        
           <button className="order-button" onClick={displayOrder}>Place Order</button>
-          <div className="order-placed">{message}</div>
+          <div className="order-placed">{message} </div>
         </div>
       </div>
     </div>
