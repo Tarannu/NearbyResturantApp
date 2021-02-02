@@ -1,0 +1,44 @@
+.Menu {
+    width: 100%;
+    height: 200vh;
+    display: block;
+    text-align: center;
+    padding:10px 20px;
+    margin:15px 0;
+    transition: 0.5s;
+    overflow: scroll;
+}
+
+/* zl li:nth-child(1):hover{
+    transform: scale(1.06);
+    background: tomato;
+    
+} */
+.OrderButton{
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid green;
+    background: green;
+    border-radius: 0.5rem;
+    margin-top: 10px;
+    outline: none;
+
+}
+
+.Cart{
+    width: 100px;
+    border: 1px solid green;
+    border-radius: 0.5rem;
+    padding: 5px;
+    margin: auto;
+}
+
+.YourCart{
+    text-align: left;
+    margin-left: 2px;
+}
+
+.ItemAndPrice{
+    text-align: right;
+    margin-right: 2px;
+}

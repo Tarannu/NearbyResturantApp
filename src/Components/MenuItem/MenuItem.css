@@ -1,0 +1,30 @@
+.MenuItem{
+    width: 60%;
+    box-sizing: content-box;
+    border: 1px solid lightgray;
+    box-shadow: rgb(238, 234, 233) 2px 2px 2px;
+    border-radius: 0.5rem;
+    text-align: justify;
+    padding: 5px;
+    margin: 5px;
+    margin-left: 100px;
+    position: relative;
+    
+}
+
+.AddToCartButton{
+    margin-left: 230px;
+    position: relative;
+    border-radius: .4rem;
+    outline: none;
+    
+
+}
+
+.AddToCartButton:hover{
+    border: 1px solid green;
+}
+
+.OrderPlaced{
+    color: green;
+}

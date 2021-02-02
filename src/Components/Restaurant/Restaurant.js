@@ -9,7 +9,7 @@ const Restaurant = (props) => {
             // onClick={props.selected}
         >
             <div className="NameAndThumbnail">
-                <NavLink className="Name" to={`/${props.id}/res-details`}><p>{props.restaurantName}</p></NavLink>
+                <NavLink className="Name" to={`/${props.id}/menu-order`}><p>{props.restaurantName}</p></NavLink>
                 { props.thumbnail ? <img src={props.thumbnail} alt={props.restaurantNname}/> : null}
             </div>  
             <div className="RestaurantLocation">

@@ -58,6 +58,7 @@ const Search = (props) => {
   let restaurants = null;
   if(results.length > 0){
     restaurants = results.map(restaurant => {
+  
       return (
         <Restaurant
           key={restaurant.restaurant.id}
