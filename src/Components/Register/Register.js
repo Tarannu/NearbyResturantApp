@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Spinner from '../Spinner/Spinner';
-import axios from '../../axios';
+import firebase from '../../api/firebase';
 import './Register.css';
 
 const Register = (props) => {
@@ -127,7 +127,7 @@ const Register = (props) => {
 
         // either sign user up or generate error message
         if(formData.isFormValid){
-            axios.get(`/users.json`)
+            firebase.get(`/users.json`)
                 .then(response => {
                     let alreadySignedUp = false;
                     for(let key in response.data){
@@ -136,7 +136,7 @@ const Register = (props) => {
                         }
                     }
                     if(alreadySignedUp === false){
-                        axios.post('/users.json', user)
+                        firebase.post('/users.json', user)
                         .then(response => {
                             console.log(response);
                         });

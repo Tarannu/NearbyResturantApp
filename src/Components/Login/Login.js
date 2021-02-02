@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Spinner from '../../components/Spinner/Spinner';
-import axios from '../../axios';
+import firebase from '../../api/firebase';
+//import AuthContext from '../../context/auth-context';
 import './Login.css';
 
 const Login = (props) => {
@@ -47,6 +48,7 @@ const Login = (props) => {
     const [validationError, setValidationError] = useState('');
     const [authenticated, setAuthenticated] = useState(false);
     const [loading, setLoading] = useState(false);
+    //const authContext = useContext(AuthContext);
     // Hackerrank api problem solved.
     const getTotalGoals = async (year, team) => {
         const BaseURL = 'https://jsonmock.hackerrank.com/api/football_matches';
@@ -126,7 +128,7 @@ const Login = (props) => {
                 setLoading(true);
                 //const userJson = await fetch(`https://restaurant-app-users-default-rtdb.firebaseio.com/users.json`);
                 //const user = await userJson.json();
-                const users = await axios.get(`/users.json`);
+                const users = await firebase.get(`/users.json`);
                 const userArray = [];
                 for(let key in users.data){
                     userArray.push([users.data[key]]);
@@ -141,6 +143,7 @@ const Login = (props) => {
                 
                 if(validUser){
                     setAuthenticated(true);
+                    //authContext.authenticated = true;
                     props.history.push('/search-and-result')
                 } else {
                     setValidationError("Email/password was wrong.");
@@ -186,6 +189,7 @@ const Login = (props) => {
                     />
                 )
             })}
+
             <Button>Login</Button>
             <p className="LoginValidationError">{validationError}</p>
         </form>

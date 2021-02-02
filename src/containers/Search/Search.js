@@ -19,7 +19,7 @@ const Search = (props) => {
     setFood(e.target.value);
   };
 
-  const searchFunc = async (loc, fd, sort) => {
+  const searchFunc = async (loc, fd, sortBy) => {
     try {
       //location key is extracted from this api
       const city_response = await zomato.get(`/locations?query=${loc}`);
@@ -48,12 +48,9 @@ const Search = (props) => {
     searchFunc(location, food, sortBy);
   }, [location, food, sortBy]);
   
-  const handleSubmit = (e) => {
-    console.log("It will take max 15 minutes to load otherwise please refresh");
-    e.preventDefault();
+  const handleSearchButton = () => {
     searchFunc(location, food, sortBy);
   };
-  const handleSearchButton = (e) => {};
 
   let restaurants = null;
   if(results.length > 0){
@@ -73,9 +70,9 @@ const Search = (props) => {
 
   }
 
-  const handleSort = (value) => {
-    setSortBy(value);
-    console.log(sortBy);
+  const handleSort = (event) => {
+    const sortByValue = event.target.value;
+    setSortBy(sortByValue);
     searchFunc(food,location,sortBy);
   };
  

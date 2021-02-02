@@ -34,3 +34,7 @@
 .SearchButton:focus, .InputBox:focus{
     border-color: tomato;
 }
+
+.SearchButton:hover{
+    cursor: pointer;
+}

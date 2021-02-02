@@ -1,8 +1,9 @@
 import zomato_menu from '../../api/zomato_menu';
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './RestaurantMenu.css'
 import MenuItem from '../../components/MenuItem/MenuItem';
 import Feedback from '../../components/Feedback/Feedback';
+import AuthContext from '../../context/auth-context';
 
 const Menu = ({ match }) => {
 const [menu, setMenu] = useState([]);
@@ -11,7 +12,7 @@ const [cart, setCart] = useState({
   items: [],
   price: 0,
 });
-const [authenticated, setAuthenticated] = useState(true);
+const authContext = useContext(AuthContext);
 
 // will be called when the component is mounted.
 useEffect(() => {
@@ -50,6 +51,8 @@ useEffect(() => {
 
   const placeOrder=()=>{
       setMessage("You order has been placed.");
+      console.log(authContext.authenticated);
+
   }
   //console.log(menu);
   const menuItems = menu.map(menuItem => {
@@ -79,7 +82,7 @@ useEffect(() => {
             {message ? <>
                     <p className="OrderPlaced">{message}</p>
                 </> : null}
-            {(message && authenticated) ?  <Feedback />: null}
+            {(message && authContext.authenticated==false) ?  <Feedback />: null}
             <h3 style={{textAlign:'justify', marginBottom:'25px'}}>Select your favorite items</h3>
             {menuItems}
         </div>

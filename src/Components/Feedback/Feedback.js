@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Feedback.css';
 
 const Feedback = () => {
+
+    const [feedback, setFeedback] = useState('');
+
+    const inputChangeHandler = (event) => {
+        const updatedFeedback = event.target.value;
+        setFeedback(updatedFeedback);
+        console.log(feedback);
+        
+    }
+
+    const handleSubmitButton = () => {
+        window.location.reload();
+    }
+
     return (
         <div>
             <p>We love your feedback</p>
             <div className="Feedback">
-                <textarea className="FeedbackBox" value="" placeholder="Share your experience."/>
-                <button className="FeedbackSubmit">Submit</button>
+                <textarea 
+                    className="FeedbackBox" 
+                    onChange={inputChangeHandler}
+                    placeholder="Share your experience."/>
+                <button 
+                    className="FeedbackSubmit"
+                    onClick={handleSubmitButton}
+                    >Submit</button>
             </div>
             <div>
                 <p>Rate your experience</p>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star"></span>
+                <span className="fa fa-star"></span>
             </div>
         </div>
     )

@@ -42,6 +42,13 @@ const Input = (props) => {
                     })}
                 </select>)
             break;
+        case('textarea'):
+                inputElement = <textarea
+                className={inputClasses.join(' ')}
+                {...props.elementConfig}
+                value={props.value}
+                onChange={props.changed}
+            />
         default:
     }
 
