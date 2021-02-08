@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Restaurant from "../../components/Restaurant/Restaurant";
+import {useAuthContext} from "../../context/auth-context";
 import zomato from "../../api/zomato";
-import ResDetails from "../../components/ResDetails/ResDetails";
+// import ResDetails from "../../components/ResDetails/ResDetails";
 import './Search.css';
 
 const Search = (props) => {
@@ -11,21 +12,26 @@ const Search = (props) => {
   const [results, setResults] = useState([]);
   const options = [{ label: "---None---", value: "" }, { label: "Sort by review", value: "by review" }];
   const [sortBy, setSortBy] = useState("");
+  const user = useAuthContext();
 
   const handleLocationChange = (e) => {
-    setLocation(e.target.value);
+    let location = e.target.value;
+    setLocation(location);
   };
   const handleFoodChange = (e) => {
-    setFood(e.target.value);
+    let food = e.target.value;
+    setFood(food);
   };
 
   const searchFunc = async (loc, fd, sortBy) => {
     try {
       //location key is extracted from this api
+      let city_id = null;
       const city_response = await zomato.get(`/locations?query=${loc}`);
-      const city_id = JSON.stringify(
-        city_response.data.location_suggestions[0].entity_id
-      );
+      if(city_response.data.location_suggestions.length > 0){
+          city_id = JSON.stringify(city_response.data.location_suggestions[0].entity_id);
+      }
+      
 
       //sort logic will be here
       var getURL = "";
@@ -77,27 +83,31 @@ const Search = (props) => {
   };
  
   return (
-    <div style={{ padding: 50 }}>
-      <SearchBar
-        location={location}
-        onLocationChange={handleLocationChange}
-        onFoodChange={handleFoodChange}
-        handleSearchButton={handleSearchButton}
-      />
-      <div>
-        <select 
-          className="SortBy"
-          onChange={handleSort}
-        >
-          {options.map(option =>{
-            return <option {...option}></option>
-          })}
-        </select>
+    <>
+      {user.userName}
+      <div style={{ padding: 50 }}>
+        <SearchBar
+          food={food}
+          location={location}
+          onLocationChange={handleLocationChange}
+          onFoodChange={handleFoodChange}
+          handleSearchButton={handleSearchButton}
+        />
+        <div>
+          <select 
+            className="SortBy"
+            onChange={handleSort}
+          >
+            {options.map(option =>{
+              return <option {...option}></option>
+            })}
+          </select>
+        </div>
+        {results.length > 0 ? <p className="SearchResults">Search Results</p> : null}
+        {restaurants}
+        {/* {results.length > 0 ? <Restaurant results={results} onSortChanged={handleSort}/>: null} */}
       </div>
-       {results.length > 0 ? <p className="SearchResults">Search Results</p> : null}
-       {restaurants}
-       {/* {results.length > 0 ? <Restaurant results={results} onSortChanged={handleSort}/>: null} */}
-    </div>
+    </>
   );
 };
 

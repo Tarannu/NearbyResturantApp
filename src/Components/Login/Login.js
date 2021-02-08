@@ -1,8 +1,9 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Spinner from '../../components/Spinner/Spinner';
 import firebase from '../../api/firebase';
+import {useAuthContext} from '../../context/auth-context';
 //import AuthContext from '../../context/auth-context';
 import './Login.css';
 
@@ -46,9 +47,9 @@ const Login = (props) => {
         validDataEntered: false,
     });
     const [validationError, setValidationError] = useState('');
-    const [authenticated, setAuthenticated] = useState(false);
     const [loading, setLoading] = useState(false);
-    //const authContext = useContext(AuthContext);
+    const {user, setUser} = useAuthContext();
+   
     // Hackerrank api problem solved.
     const getTotalGoals = async (year, team) => {
         const BaseURL = 'https://jsonmock.hackerrank.com/api/football_matches';
@@ -134,16 +135,28 @@ const Login = (props) => {
                     userArray.push([users.data[key]]);
                 }
                 let validUser = false;
+                let userFirstName = null;
+                let userLastName = null;
                 for(let i=0;i<userArray.length;i++){
                     if((userArray[i][0].username === formData.dataFields.email.value) && 
                         (userArray[i][0].password === formData.dataFields.password.value)){
                             validUser = true;
+                            userFirstName = userArray[i][0].firstName;
+                            userLastName = userArray[i][0].lastName;
                         }
                 }
                 
                 if(validUser){
-                    setAuthenticated(true);
-                    //authContext.authenticated = true;
+                    const loggedInUser = {
+                        name: userFirstName + ' ' + userLastName,
+                        username: formData.dataFields.email.value,
+                        authenticated: true,
+                    }
+
+                    setUser(() => {
+                        return loggedInUser;
+                    });
+
                     props.history.push('/search-and-result')
                 } else {
                     setValidationError("Email/password was wrong.");

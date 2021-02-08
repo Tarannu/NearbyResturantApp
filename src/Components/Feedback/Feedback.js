@@ -8,7 +8,6 @@ const Feedback = () => {
     const inputChangeHandler = (event) => {
         const updatedFeedback = event.target.value;
         setFeedback(updatedFeedback);
-        console.log(feedback);
         
     }
 

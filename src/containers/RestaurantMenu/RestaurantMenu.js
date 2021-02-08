@@ -1,18 +1,22 @@
-import zomato_menu from '../../api/zomato_menu';
 import React, { useContext, useEffect, useState } from "react";
-import './RestaurantMenu.css'
+import Spinner from '../../components/Spinner/Spinner';
 import MenuItem from '../../components/MenuItem/MenuItem';
 import Feedback from '../../components/Feedback/Feedback';
-import AuthContext from '../../context/auth-context';
+import Logout from '../../components/Logout';
+import {useAuthContext} from '../../context/auth-context';
+import zomato_menu from '../../api/zomato_menu';
+import './RestaurantMenu.css'
 
-const Menu = ({ match }) => {
+
+const RestaurantMenu = ({history, match }) => {
 const [menu, setMenu] = useState([]);
 const [message, setMessage]=useState("");
 const [cart, setCart] = useState({
   items: [],
   price: 0,
 });
-const authContext = useContext(AuthContext);
+
+const { user, setUser } = useAuthContext();
 
 // will be called when the component is mounted.
 useEffect(() => {
@@ -41,18 +45,23 @@ useEffect(() => {
     }
   };
   const addItemsToCart = (name, price) => {
-    const updatedItems = [...cart.items];
+    let updatedItems = [...cart.items];
     updatedItems.push({name: name, price: price});
-    const updatedPrice = cart.price + Number.parseFloat(price.substring(0, 4));
+    let updatedPrice = cart.price + Number.parseFloat(price.substring(0, 3));
     setCart({items: updatedItems, price: updatedPrice})
-    console.log(cart);
+    //console.log(cart);
 }
 
 
   const placeOrder=()=>{
       setMessage("You order has been placed.");
-      console.log(authContext.authenticated);
+      //console.log(authContext.authenticated);
 
+  }
+
+  const handleLogout = () => {
+      setUser(null);
+      history.push('/home');
   }
   //console.log(menu);
   const menuItems = menu.map(menuItem => {
@@ -70,23 +79,24 @@ useEffect(() => {
         <div 
             key="Restaurant Menu"
             className="Menu">
+            {user ? <Logout handleLogout={handleLogout}/> : null}
             <div className="Cart">
                 <p className="YourCart">Your cart</p>
 
                 <div className="ItemAndPrice">
                     <p>Items: <strong>{cart.items.length}</strong></p>
-                    <p>Price: <strong>${cart.price}</strong></p>
+                    <p>Price: <strong>${cart.price.toFixed(2)}</strong></p>
                     <button className="OrderButton" onClick={placeOrder}>Place Order</button>
                 </div>
             </div>
             {message ? <>
                     <p className="OrderPlaced">{message}</p>
                 </> : null}
-            {(message && authContext.authenticated==false) ?  <Feedback />: null}
+            {(message && user) ?  <Feedback />: null}
             <h3 style={{textAlign:'justify', marginBottom:'25px'}}>Select your favorite items</h3>
-            {menuItems}
+            {menu.length > 0 ? menuItems : <Spinner/>}
         </div>
   );
 };
 
-export default Menu;
+export default RestaurantMenu;

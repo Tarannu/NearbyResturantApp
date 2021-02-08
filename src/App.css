@@ -2,7 +2,14 @@
   text-align: center;
 }
 
-.nav{
+.User{
+  padding: 10px;
+  float: right;
+  color: rgb(7, 138, 190);
+
+}
+
+/* .nav{
   display:flex;
   justify-content: space-around;
   align-items: center;
@@ -19,15 +26,8 @@
   align-items: center;
   list-style: none;
 }
-input{
-  width: 50%;
-  height: 50px;
-  padding: 20px;
-  margin: 20px 0;
-  box-sizing: border-box;
-  background-color: rgb(240, 240, 240);
-}
-/* Home page style*/
+
+/* Home page style
 .searchButton{
   background: rgb(233, 183, 190);
   box-shadow: 10;
@@ -40,7 +40,7 @@ input{
   align-self: center;
 }
 
-/* Sign up form */
+/* Sign up form 
 .signup-form{
   background-color: beige;
 }
@@ -58,9 +58,19 @@ input{
 }
 .signup-button{
   box-sizing: border-box;
- 
-  
 }
+*/
 .error-message{
   color: red;
 }
+
+input{
+  width: 50%;
+  height: 50px;
+  padding: 20px;
+  margin: 20px 0;
+  box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
+}
+
+

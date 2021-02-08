@@ -8,13 +8,15 @@ const SearchBar = (props) => {
     <div className="SearchBar">
         <input 
           className="InputBox"
-          type="text"
-          placeholder="Enter food type ..."
           onChange={props.onFoodChange}
+          type="text"
+          value={props.food}
+          placeholder="Enter food type ..."
         />
         <input
             className="InputBox"
             onChange={props.onLocationChange}
+            type="text"
             value={props.location}
             placeholder="Enter Location ... "
         />
