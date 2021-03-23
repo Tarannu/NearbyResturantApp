@@ -32,9 +32,11 @@ const Home = () => {
 
       //sort logic will be here
       var getURL = "";
-      if (sort == "by review") {
+      if (sort.value === "by review") {
+        console.log("Inside if state sort === by review")
         getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}&sort=rating&order=desc`;
-      } else getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}`;
+      } else { getURL = `/search?entity_id=${city_id}&entity_type=city&q=${fd}`;}
+      
       //this api get the food type
       const food_response = await zomato.get(getURL);
 
@@ -60,8 +62,8 @@ const Home = () => {
   const handleClick = (e) => {};
   const handleSelect = (value) => {
     setSort(value);
-    console.log(sort);
-    searchFunc(food,location,sort);
+    console.log(sort.value);
+  
   };
 
   return (
